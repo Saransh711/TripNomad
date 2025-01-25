@@ -250,8 +250,7 @@ function sortedValueRating(condition, hotelCopy) {
 
 app.get('/hotels/sort/rating', (req, res) => {
   let rating = req.query.rating;
-  let hotelCopy = hotels.slice();
-  let result = sortedValueRating(rating, hotelCopy);
+  let result = sortedValueRating(rating, hotels);
   res.json({ result });
 });
 
@@ -274,8 +273,7 @@ function sortedValueReviews(reviews, hotelCopy) {
 
 app.get('/hotels/sort/reviews', (req, res) => {
   let reviews = req.query.reviews;
-  let hotelCopy = hotels.slice();
-  let result = sortedValueReviews(reviews, hotelCopy);
+  let result = sortedValueReviews(reviews, hotels);
   res.json({ result });
 });
 
@@ -285,8 +283,7 @@ function filteredByAmenity(hotelObj, amenity) {
 
 app.get('/hotels/filter/amenity', (req, res) => {
   let amenity = req.query.amenity;
-  let hotelCopy = hotels.slice();
-  let result = hotelCopy.filter((hotelObj) => {
+  let result = hotels.filter((hotelObj) => {
     return filteredByAmenity(hotelObj, amenity);
   });
   res.json({ result });
@@ -298,8 +295,7 @@ function filterByCountry(hotelObj, country) {
 
 app.get('/hotels/filter/country', (req, res) => {
   let country = req.query.country;
-  let hotelCopy = hotels.slice();
-  let result = hotelCopy.filter((hotelObj) => {
+  let result = hotels.filter((hotelObj) => {
     return filterByCountry(hotelObj, country);
   });
   res.json({ result });
@@ -311,8 +307,7 @@ function filterByCategory(hotelObj, category) {
 
 app.get('/hotels/filter/category', (req, res) => {
   let category = req.query.category;
-  let hotelCopy = hotels.slice();
-  let result = hotelCopy.filter((hotelObj) => {
+  let result = hotels.filter((hotelObj) => {
     return filterByCategory(hotelObj, category);
   });
   res.json({ result });
